@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-import 'package:rick_and_morty/domain/entities/character/character.dart';
+import 'package:rick_and_morty/domain/entities/character/character_entity.dart';
 import 'package:rick_and_morty/domain/entities/character/character_gender.dart';
 import 'package:rick_and_morty/domain/entities/character/character_status.dart';
 import 'package:rick_and_morty/domain/use_cases/fetch_characters_use_case.dart';
@@ -21,10 +21,10 @@ abstract class _CharactersStore with Store {
   final FetchCharactersUseCase fetchCharactersUseCase;
 
   @observable
-  ObservableFuture<Either<Failure, List<Character>>>? charactersFuture;
+  ObservableFuture<Either<Failure, List<CharacterEntity>>>? charactersFuture;
 
   @observable
-  List<Character> characters = ObservableList<Character>();
+  List<CharacterEntity> characters = ObservableList<CharacterEntity>();
 
   @observable
   String? errorMessage;
@@ -63,20 +63,20 @@ abstract class _CharactersStore with Store {
           .toList(),
     };
 
-    charactersFuture = ObservableFuture<Either<Failure, List<Character>>>(
+    charactersFuture = ObservableFuture<Either<Failure, List<CharacterEntity>>>(
       fetchCharactersUseCase.call(
         FetchCharactersParams(queryParams),
       ),
     );
 
-    final Either<Failure, List<Character>> either = await charactersFuture!;
+    final Either<Failure, List<CharacterEntity>> either = await charactersFuture!;
 
     either.fold(
       (Failure failure) {
         errorMessage = failure.message;
         debugPrint(errorMessage);
       },
-      (List<Character> charactersFromServer) {
+      (List<CharacterEntity> charactersFromServer) {
         errorMessage = null;
         characters
           ..clear()

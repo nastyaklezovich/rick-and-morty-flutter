@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:rick_and_morty/constants/app_padding.dart';
-import 'package:rick_and_morty/domain/entities/character/character.dart';
+import 'package:rick_and_morty/domain/entities/character/character_entity.dart';
 import 'package:rick_and_morty/injection.dart';
 import 'package:rick_and_morty/presentation/characters/store/characters_store.dart';
 import 'package:rick_and_morty/presentation/characters/view/widgets/character_card.dart';
@@ -82,7 +82,7 @@ class _CharactersPageState extends State<CharactersPage> {
               ),
               Observer(
                 builder: (_) {
-                  final ObservableFuture<Either<Failure, List<Character>>>?
+                  final ObservableFuture<Either<Failure, List<CharacterEntity>>>?
                       future = _charactersStore.charactersFuture;
 
                   if (future == null) {
@@ -100,7 +100,7 @@ class _CharactersPageState extends State<CharactersPage> {
 
                     case FutureStatus.fulfilled:
                       final String? error = _charactersStore.errorMessage;
-                      final List<Character> characters =
+                      final List<CharacterEntity> characters =
                           _charactersStore.characters;
                       if (error != null) {
                         return ErrorMessageWidget(

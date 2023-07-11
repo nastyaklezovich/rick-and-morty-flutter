@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty/constants/app_border_radius.dart';
 import 'package:rick_and_morty/constants/app_padding.dart';
-import 'package:rick_and_morty/domain/entities/character/character.dart';
+import 'package:rick_and_morty/domain/entities/character/character_entity.dart';
 import 'package:rick_and_morty/domain/entities/character/character_status.dart';
 import 'package:rick_and_morty/presentation/character/widgets/character_info_row.dart';
 import 'package:rick_and_morty/presentation/widgets/image_placeholder.dart';
@@ -13,10 +13,10 @@ class CharacterPage extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  final Character character;
+  final CharacterEntity character;
 
   static Route<dynamic> route({
-    required Character character,
+    required CharacterEntity character,
   }) =>
       MaterialPageRoute<void>(
         builder: (_) => CharacterPage(
@@ -29,13 +29,13 @@ class CharacterPage extends StatefulWidget {
 }
 
 class _CharacterPageState extends State<CharacterPage> {
-  Character get character => widget.character;
+  CharacterEntity get character => widget.character;
 
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text('Character'),
+          title: const Text('CharacterEntity'),
         ),
         body: SingleChildScrollView(
           child: Padding(

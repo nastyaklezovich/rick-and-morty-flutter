@@ -1,7 +1,7 @@
 import 'package:rick_and_morty/domain/entities/character/character_gender.dart';
 import 'package:rick_and_morty/domain/entities/character/character_status.dart';
 
-class Character {
+class CharacterEntity {
   final int id;
   final String name;
   final CharacterStatus status;
@@ -11,7 +11,7 @@ class Character {
   final String imageUrl;
   final String? created;
 
-  Character({
+  CharacterEntity({
     required this.id,
     required this.name,
     required this.status,

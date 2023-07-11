@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty/constants/app_border_radius.dart';
-import 'package:rick_and_morty/domain/entities/character/character.dart';
+import 'package:rick_and_morty/domain/entities/character/character_entity.dart';
 import 'package:rick_and_morty/domain/entities/character/character_status.dart';
 import 'package:rick_and_morty/presentation/character/view/character_page.dart';
-import 'package:rick_and_morty/presentation/character/widgets/character_info_row.dart';
 import 'package:rick_and_morty/presentation/widgets/custom_card.dart';
 import 'package:rick_and_morty/presentation/widgets/image_placeholder.dart';
 import 'package:rick_and_morty/utils/extensions/string_extension.dart';
@@ -14,7 +13,7 @@ class CharacterCard extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-  final Character character;
+  final CharacterEntity character;
 
   @override
   Widget build(BuildContext context) => GestureDetector(

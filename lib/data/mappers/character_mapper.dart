@@ -1,11 +1,11 @@
-import 'package:rick_and_morty/data/models/character_response/character_response.dart';
-import 'package:rick_and_morty/domain/entities/character/character.dart';
+import 'package:rick_and_morty/data/models/character_model/character_model.dart';
+import 'package:rick_and_morty/domain/entities/character/character_entity.dart';
 import 'package:rick_and_morty/domain/entities/character/character_gender.dart';
 import 'package:rick_and_morty/domain/entities/character/character_status.dart';
 
 class CharacterMapper {
-  static Character fromResponse({required CharacterResponse response}) =>
-      Character(
+  static CharacterEntity fromResponse({required CharacterModel response}) =>
+      CharacterEntity(
         id: response.id,
         name: response.name ?? 'Unknown',
         status: CharacterStatus.values.byName(

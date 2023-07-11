@@ -1,17 +1,17 @@
 import 'package:rick_and_morty/data/clients/rest_client.dart';
-import 'package:rick_and_morty/data/datasources/remote/characters_datasource.dart';
-import 'package:rick_and_morty/data/models/character_response/character_response.dart';
+import 'package:rick_and_morty/data/datasources/remote/remote_characters_datasource.dart';
+import 'package:rick_and_morty/data/models/character_model/character_model.dart';
 import 'package:rick_and_morty/data/models/characters_response/characters_response.dart';
 import 'package:rick_and_morty/injection.dart';
 
-class CharactersDatasourceImpl implements CharactersDatasource {
-  CharactersDatasourceImpl({RestClient? client})
+class RemoteCharactersDatasourceImpl implements RemoteCharactersDatasource {
+  RemoteCharactersDatasourceImpl({RestClient? client})
       : _client = client ?? getIt.get<RestClient>();
 
   final RestClient _client;
 
   @override
-  Future<List<CharacterResponse>> fetchCharacters(
+  Future<List<CharacterModel>> fetchCharacters(
     Map<String, dynamic> queryParams,
   ) async {
     try {
